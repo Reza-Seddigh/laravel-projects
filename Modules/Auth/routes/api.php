@@ -1,0 +1,14 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Modules\Auth\Http\Controllers\AuthController;
+
+
+// api/v1/auth/check-user
+Route::middleware([])->prefix('v1/auth')->group(function () {
+
+    Route::post('check-user', [AuthController::class, 'checkUser'])
+    ->name('check-user')
+    ->middleware('throttle:check-user');
+
+});
