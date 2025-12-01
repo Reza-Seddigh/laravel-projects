@@ -33,7 +33,7 @@ class AuthServiceProvider extends ServiceProvider
 
         RateLimiter::for('check-user',function(Request $request){
 
-            return Limit::perMinute(2)->by($request->ip());
+            return Limit::perMinute(5,2)->by($request->ip());
 
         });
     }
